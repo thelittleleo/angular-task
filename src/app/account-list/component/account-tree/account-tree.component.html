@@ -1,0 +1,21 @@
+<label class="flex items-center py-2 px-2" [ngClass]="{'cursor-pointer': isExpandable()}" (click)="toggle()">
+  <ng-container *ngIf="isExpandable()">
+    <svg *ngIf="!isExpanded" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"></path>
+    </svg>
+    <svg *ngIf="isExpanded" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+    </svg>
+  </ng-container>
+  <ng-container *ngIf="!isExpandable()">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15"></path>
+    </svg>
+  </ng-container>
+  <span>{{ account.name }}</span>
+</label>
+<div *ngIf="isExpanded" class="pl-5">
+  <ng-container *ngFor="let account of account.accounts">
+    <account-tree [account]="account"></account-tree>
+  </ng-container>
+</div>
